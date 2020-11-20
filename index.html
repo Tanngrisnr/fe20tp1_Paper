@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@latest"></script>
     <link rel="stylesheet" href="style.css">
-    <script src="notes.js" defer></script>
+    <script src="note.js" defer></script>
     <script src="a11y.js" defer></script>
     <title>Quire - quick notes</title>
 </head>
@@ -22,12 +22,16 @@
 
     </header>
     <main>
-        <section id='editorjs'>
+        <section>
             <h2>Notes editor</h2>
+
+            <div id='editorjs'></div>
+
+            <button onclick="saveFunction()">Save</button>
         </section>
         <section>
             <h2>Saved notes</h2>
-            This is Fredrik_W branch
+            <div id='note-list'></div>
         </section>
 
     </main>
