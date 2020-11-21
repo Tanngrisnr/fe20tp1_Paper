@@ -59,7 +59,9 @@ function renderNotes(items){
         article.setAttribute('data-key', item.time)
         
         item.blocks.forEach(block => {
-            article.innerHTML = `${block.data.text}`
+            const b = document.createElement('p')
+            b.innerHTML += `${block.data.text}`
+            article.append(b)
         });
         console.log(items);
         noteList.append(article);

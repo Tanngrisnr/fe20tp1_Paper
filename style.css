@@ -16,3 +16,7 @@ section {
   padding: 3%;
   width: 60%;
 }
+.note {
+  margin: 2%;
+  border: 1px solid black;
+}
