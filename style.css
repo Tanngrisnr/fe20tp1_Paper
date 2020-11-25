@@ -20,3 +20,8 @@ section {
   margin: 2%;
   border: 1px solid black;
 }
+
+.note-title {
+  border: 1px solid black;
+  color: mediumseagreen;
+}
