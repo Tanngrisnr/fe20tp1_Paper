@@ -1,76 +1,43 @@
+const saveBtn = document.getElementById('save');
 const noteList = document.getElementById('note-list')
+
+
 let notes = [];
 
-const editor = new EditorJS({
-    holder: 'editorjs', 
-
-    tools: { 
-        header: {
-          class: Header, 
-          placeholder:"Heading",
-          inlineToolbar: ['link'],
-          shortcut: 'CMD+SHIFT+H',
-          levels: [2, 3, 4],
-          defaultLevel: 3,
-          inlineToolbar: true,
-        }, 
-        paragraph: {
-            class: Paragraph,
-            inlineToolbar: true,
-        },
-        list: {
-            class: List,
-            inlineToolbar: true,
-        },
-        image: SimpleImage,
-        Marker: {
-            class: Marker,
-            shortcut: 'CMD+SHIFT+M',
-        },
-        underline: Underline,
-        
-
-        },
+var quill = new Quill('#editor', {
+    theme: 'snow'
   });
 
-  function saveFunction(){
-    editor.save().then((output) => {
-        createNote(output)
-    }).catch((error) => {
-        console.log('Saving failed: ', error)
-    });
-    
-}
-
-function createNote(obj){
-
-    const note = obj;
+saveBtn.addEventListener('click', ()=>{
+    const note = {
+        data: quill.root.innerHTML,
+        id: Date.now(),
+    }
     notes.push(note);
-    addToLocalStorage(notes);
-}
+    addToLocalStorage(notes, noteList);
+});
 
-function renderNotes(items){
-    noteList.innerHTML = ''
-
-    items.forEach(item => {
-        const article = document.createElement('article')
-        
-        article.setAttribute('class', 'note')
-        article.setAttribute('data-key', item.time)
-        
-        item.blocks.forEach(block => {
-            const b = document.createElement('p')
-            b.innerHTML += `${block.data.text}`
-            article.append(b)
+function renderNotes(items, container){
+        container.innerHTML = ''
+    
+        items.forEach(item => {
+            const article = document.createElement('article')
+            
+            article.setAttribute('class', 'note')
+            article.setAttribute('data-key', item.id)
+            article.innerHTML = `${item.data}`
+            
+           
+            console.log(items);
+            container.append(article);
         });
-        console.log(items);
-        noteList.append(article);
-    });
+    
+
 }
 
 function addToLocalStorage(arr) {
     localStorage.setItem("notes", JSON.stringify(arr));
-    renderNotes(notes);
+    renderNotes(notes, noteList);
   }
 
 function getFromLocalStorage() {
@@ -78,7 +45,7 @@ function getFromLocalStorage() {
   
     if (reference) {
       notes = JSON.parse(reference);
-      renderNotes(notes);
+      renderNotes(notes, noteList);
     }
   }
 getFromLocalStorage();

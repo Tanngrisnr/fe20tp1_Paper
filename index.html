@@ -4,13 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/editorjs-paragraph-with-alignment@1.1.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@latest"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script defer src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <link rel="stylesheet" href="style.css">
     <script src="note.js" defer></script>
     <script src="a11y.js" defer></script>
@@ -25,9 +20,13 @@
         <section>
             <h2>Notes editor</h2>
 
-            <div id='editorjs'></div>
+            <div id="editor">
+                <p>Hello World!</p>
+                <p>Some initial <strong>bold</strong> text</p>
+                <p><br></p>
+            </div>
 
-            <button onclick="saveFunction()">Save</button>
+            <button id='save'>Save</button>
         </section>
         <section>
             <h2>Saved notes</h2>
