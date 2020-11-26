@@ -31,9 +31,7 @@ function renderNotes(items, container){
             console.log(items);
             container.append(article);
         });
-    
-
-}
+    };
 
 function addToLocalStorage(arr) {
     localStorage.setItem("notes", JSON.stringify(arr));
