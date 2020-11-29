@@ -4,7 +4,17 @@ const noteList = document.getElementById('note-list')
 
 let notes = [];
 
+var toolbarModifier = [
+  ['bold', 'italic', 'underline', 'strike'],
+  [{ 'font': [] }],
+  [{ 'header': [1, 2, 3, false] }],
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+]
+
 var quill = new Quill('#editor', {
+  modules : {
+    toolbar: toolbarModifier
+  },
     theme: 'snow'
   });
 
