@@ -32,8 +32,6 @@ function renderNotes(items, container) {
     console.log(items);
     container.append(article);
   });
-
-
 }
 
 function getDate() {
@@ -43,6 +41,7 @@ function getDate() {
   let dateTime = date + ' ' + time;
   return dateTime;
 }
+
 
 function addToLocalStorage(arr) {
   localStorage.setItem("notes", JSON.stringify(arr));
@@ -57,3 +56,4 @@ function getFromLocalStorage() {
     renderNotes(notes, noteList);
   }
 }
+getFromLocalStorage();
