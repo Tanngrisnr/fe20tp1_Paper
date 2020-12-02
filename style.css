@@ -1,15 +1,83 @@
-header {
-  text-align: center;
-}
-main {
-  width: 100vw;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+@media only screen and (max-width: 600px) {
+  header {
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: xx-large;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+  section {
+    border-radius: 3rem;
+    font-family: 'Quicksand', sans-serif;
+    box-shadow: inset 0 0 10px #c5c3c3;
+    padding: 5%;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 5%;
+  }
+  #note-list {
+    padding: 20px;
+  }
+  .note {
+    margin: 2%;
+    border-bottom: 1px solid rgb(58, 58, 58);
+  }
+  #save {
+    margin: 3%;
+    font-size: small;
+    font-weight: bold;
+    border-radius: 1em;
+    padding: 15px;
+    cursor: pointer;
+    background: rgb(238, 236, 234);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 2px 3px rgba(0, 0, 0, 0.70);
+  }
+  h2 {
+    text-decoration: underline #acaaaa;
+  }
+  #save:hover {
+    background: rgb(174, 176, 176);
+    background: linear-gradient(0deg, rgba(174, 176, 176, 1) 0%, rgba(246, 245, 244, 1) 100%);
+  }
+  .ql-toolbar, .ql-snow {
+    max-width: 100%;
+  }
+  
+  #editor {
+    border: solid 1px rgb(204, 203, 203);
+    box-shadow: inset 0 0 10px #e1dfdf;
+    min-width: 100%;
+    height: fit-content;
+  }
+  #expand-notes {
+    border: solid 1px rgb(204, 203, 203);
+    box-shadow: inset 0 0 10px #e1dfdf;
+    min-width: 100%;
+    height: fit-content;
+  }
 }
 
+@media only screen and (min-width: 600px) {
+  header {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  #note-list {
+    margin: 2%;
+    border: solid 1px rgb(204, 203, 203);
+    box-shadow: inset 0 0 10px #e1dfdf;
+  }
+  #expand-notes {
+    border: solid 1px rgb(204, 203, 203);
+    box-shadow: inset 0 0 10px #e1dfdf;
+  }
+  #editor {
+    border: solid 1px rgb(204, 203, 203);
+    box-shadow: inset 0 0 10px #e1dfdf;
+  }
+}
 section {
   border-radius: 3rem;
   box-shadow: inset 0 0 10px #000000;
