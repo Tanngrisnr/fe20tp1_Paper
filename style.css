@@ -1,7 +1,7 @@
 @media only screen and (max-width: 600px) {
   header {
     text-align: center;
-    font-family: 'Quicksand', sans-serif;
+    font-family: "Quicksand", sans-serif;
     font-size: xx-large;
   }
   .content {
@@ -10,11 +10,12 @@
   }
   section {
     border-radius: 3rem;
-    font-family: 'Quicksand', sans-serif;
+    font-family: "Quicksand", sans-serif;
     box-shadow: inset 0 0 10px #c5c3c3;
     padding: 5%;
     width: 80%;
-    margin: auto;
+    margin: 0 auto;
+    align-self: center;
     margin-bottom: 5%;
   }
   #note-list {
@@ -32,19 +33,25 @@
     padding: 15px;
     cursor: pointer;
     background: rgb(238, 236, 234);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 2px 3px rgba(0, 0, 0, 0.70);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3),
+      0 2px 3px rgba(0, 0, 0, 0.7);
   }
   h2 {
     text-decoration: underline #acaaaa;
   }
   #save:hover {
     background: rgb(174, 176, 176);
-    background: linear-gradient(0deg, rgba(174, 176, 176, 1) 0%, rgba(246, 245, 244, 1) 100%);
+    background: linear-gradient(
+      0deg,
+      rgba(174, 176, 176, 1) 0%,
+      rgba(246, 245, 244, 1) 100%
+    );
   }
-  .ql-toolbar, .ql-snow {
+  .ql-toolbar,
+  .ql-snow {
     max-width: 100%;
   }
-  
+
   #editor {
     border: solid 1px rgb(204, 203, 203);
     box-shadow: inset 0 0 10px #e1dfdf;
