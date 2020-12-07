@@ -10,10 +10,8 @@ let notes = [];
 
 const toolbarModifier = [
   ['bold', 'italic', 'underline', 'strike'],
-  [{ 'font': [] }],
   [{ 'header': [1, 2, 3, false] }],
   [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-  [{ 'color': [] }, { 'background': [] }],
   [{ 'align': [] }]
 ]
 
@@ -22,7 +20,7 @@ const quill = new Quill('#editor', {
     toolbar: toolbarModifier
   },
   placeholder: 'Compose a note...',
-    theme: 'snow'
+    theme: 'bubble'
   });
 
 saveBtn.addEventListener('click', () => {
@@ -32,7 +30,7 @@ saveBtn.addEventListener('click', () => {
 
 function saveNote(){
   const note = {
-    title: titleInput.value,
+    title: getTitle(),
     data: quill.root.innerHTML,
     editorData: quill.getContents(),
     id: Date.now(),
@@ -72,6 +70,18 @@ function getDate() {
   let time = today.getHours() + ":" + today.getMinutes();
   let dateTime = date + ' ' + time;
   return dateTime;
+}
+
+
+function getTitle() {
+  if (!titleInput.validity.value) {
+    let qText = quill.getText()
+    let tempTitle = qText.substr(0,15)
+      return tempTitle;
+    }
+  else {
+    return titleInput.value;
+  }
 }
 
 
