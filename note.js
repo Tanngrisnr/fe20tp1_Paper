@@ -13,7 +13,8 @@ const toolbarModifier = [
   ['bold', 'italic', 'underline', 'strike'],
   [{ 'header': [1, 2, 3, false] }],
   [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-  [{ 'align': [] }]
+  [{ 'align': [] }],
+  [ 'link', 'image', 'video', 'formula' ]
 ]
 
 const quill = new Quill('#editor', {
@@ -155,15 +156,15 @@ noteList.addEventListener("click", (event) => {
     editNote(event.target.parentElement.getAttribute("data-key"));
     return;
   }
+  if (event.target.classList.contains("favorite-button")) {
+    favoriteNote(event.target.parentElement.getAttribute("data-key"));
+  }
   event.target.classList.toggle("active");
   let note_content = event.target.nextElementSibling;
   if (note_content.style.maxHeight) {
     note_content.style.maxHeight = null;
   } else {
     note_content.style.maxHeight = note_content.scrollHeight + "px";
-  }
-  if (event.target.classList.contains("favorite-button")) {
-    favoriteNote(event.target.parentElement.getAttribute("data-key"));
   }
 });
 
