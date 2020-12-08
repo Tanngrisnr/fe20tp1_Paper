@@ -10,11 +10,11 @@
         content="Quire - A document page where you can write all your notes, save them and create your favorites">
 
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.quilljs.com/1.3.6/quill.bubble.css">
     <script defer src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="note.js" defer></script>
+    <script src="theme.js" defer></script>
     <script src="a11y.js" defer></script>
     <title>Quire - quick notes</title>
 </head>
@@ -22,24 +22,27 @@
 <body>
     <div class="content">
         <header>
-            <p>Quire - The extraordinary Texteditor!</p>
+            <h1>Quire - Quick notes</h1>
         </header>
         <main>
             <section>
                 <h2>Notes editor</h2>
                 <label for="title">
-                    <h3>Title</h3>
-                    <input id='title' name='title' type="text">
+                    <input placeholder='Title (optional)' id='title' name='title' type="text">
                 </label>
                 <div id="editor"></div>
                 <button id='save'>Save</button>
             </section>
+
+
             <section>
                 <h2>Saved notes</h2>
                 <div id="note-list"></div>
             </section>
         </main>
-        <footer></footer>
+        <footer>
+            <button id="dm-btn">toggle darkmode</button>
+        </footer>
     </div>
 </body>
 

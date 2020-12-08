@@ -1,107 +1,61 @@
-@media only screen and (max-width: 600px) {
-  header {
-    text-align: center;
-    font-family: "Quicksand", sans-serif;
-    font-size: xx-large;
-  }
-  .content {
-    display: flex;
-    flex-direction: column;
-  }
-  section {
-    border-radius: 3rem;
-    font-family: "Quicksand", sans-serif;
-    box-shadow: inset 0 0 10px #c5c3c3;
-    padding: 5%;
-    width: 80%;
-    margin: 0 auto;
-    align-self: center;
-    margin-bottom: 5%;
-  }
-  #note-list {
-    padding: 20px;
-  }
-  .note {
-    margin: 2%;
-    border-bottom: 1px solid rgb(58, 58, 58);
-  }
-  #save {
-    margin: 3%;
-    font-size: small;
-    font-weight: bold;
-    border-radius: 1em;
-    padding: 15px;
-    cursor: pointer;
-    background: rgb(238, 236, 234);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3),
-      0 2px 3px rgba(0, 0, 0, 0.7);
-  }
-  h2 {
-    text-decoration: underline #acaaaa;
-  }
-  #save:hover {
-    background: rgb(174, 176, 176);
-    background: linear-gradient(
-      0deg,
-      rgba(174, 176, 176, 1) 0%,
-      rgba(246, 245, 244, 1) 100%
-    );
-  }
-  .ql-toolbar,
-  .ql-snow {
-    max-width: 100%;
-  }
 
-  #editor {
-    border: solid 1px rgb(204, 203, 203);
-    box-shadow: inset 0 0 10px #e1dfdf;
-    min-width: 100%;
-    height: fit-content;
-  }
-  #expand-notes {
-    border: solid 1px rgb(204, 203, 203);
-    box-shadow: inset 0 0 10px #e1dfdf;
-    min-width: 100%;
-    height: fit-content;
-  }
+:root {
+  --bg: white;
+  --txt: lightslategrey;
+  --font: "Times New Roman", Times, serif;
 }
 
-@media only screen and (min-width: 600px) {
-  header {
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  #note-list {
-    margin: 2%;
-    border: solid 1px rgb(204, 203, 203);
-    box-shadow: inset 0 0 10px #e1dfdf;
-  }
-  #expand-notes {
-    border: solid 1px rgb(204, 203, 203);
-    box-shadow: inset 0 0 10px #e1dfdf;
-  }
-  #editor {
-    border: solid 1px rgb(204, 203, 203);
-    box-shadow: inset 0 0 10px #e1dfdf;
-  }
+:root.dark-theme {
+  --font: Helvetica, Arial, sans-serif;
+  --bg: lightslategrey;
+  --txt: white;
 }
+
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--bg);
+  color: var(--txt);
+  scroll-behavior: smooth;
+  scrollbar-width: 1%;
+}
+
+main {
+  display: flex;
+  flex-flow: column;
+  width: 90%;
+  margin: 0 auto;
+}
+
 section {
-  border-radius: 3rem;
-  box-shadow: inset 0 0 10px #000000;
-  padding: 3%;
-  width: 60%;
-}
-.note {
-  margin: 2%;
-  border: 1px solid black;
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+  border: 1px solid white;
 }
 
-.note-title {
-  border: 1px solid black;
-  color: mediumseagreen;
+#title {
 }
 
-.ql-viewer p,
+.ql-editor.ql-blank::before {
+  color: var(--txt);
+
+}
+
+.ql-container {
+  font-family: var(--font);
+}
+
+/* .ql-viewer p,
 .ql-viewer ol,
 .ql-viewer ul,
 .ql-viewer pre,
@@ -112,14 +66,51 @@ section {
 .ql-viewer h4,
 .ql-viewer h5,
 .ql-viewer h6 {
+
+.delete-button {
+  padding: 10px;
+  margin: 2%;
+  font-size: small;
+  font-weight: bold;
+  border-radius: 1em;
+  border: rgb(245, 243, 245);
+  cursor: pointer;
+  background: rgb(238, 236, 234);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 2px 3px rgba(0, 0, 0, 0.7);
+}
+
+.delete-button:hover {
+  background: rgb(174, 176, 176);
+  background: linear-gradient( 0deg, rgba(174, 176, 176, 1) 0%, rgba(246, 245, 244, 1) 100%);
+}
+
+.edit-button {
+  padding: 10px;
+  font-size: small;
+  font-weight: bold;
+  border-radius: 1em;
+  border: rgb(245, 243, 245);
+  cursor: pointer;
+  background: rgb(238, 236, 234);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 2px 3px rgba(0, 0, 0, 0.7);
+}
+
+.edit-button:hover {
+  background: rgb(174, 176, 176);
+  background: linear-gradient( 0deg, rgba(174, 176, 176, 1) 0%, rgba(246, 245, 244, 1) 100%);
+}
+
+.ql-viewer p, .ql-viewer ol, .ql-viewer ul, .ql-viewer pre, .ql-viewer blockquote, .ql-viewer h1, .ql-viewer h2, .ql-viewer h3, .ql-viewer h4, .ql-viewer h5, .ql-viewer h6 {
+
   margin: 0;
   padding: 0;
 }
 
 .ql-viewer {
-  padding: 12px 15px;
-  border: 1px solid #c1c1c1;
+  padding: 20px 10px;
+  border-style: ridge;
   font-family: Helvetica, Arial, sans-serif;
+  margin-bottom: 5%;
 }
 
 .ql-viewer .ql-font-serif {
@@ -164,23 +155,21 @@ section {
   padding-left: 16px;
 }
 
-.ql-viewer code,
-.ql-viewer pre {
+.ql-viewer code, .ql-viewer pre {
   background-color: #f0f0f0;
   border-radius: 3px;
   padding: 6px 10px;
 }
 
-.ql-viewer ul > li[data-checked="true"]::before {
+.ql-viewer ul>li[data-checked="true"]::before {
   content: "\2611";
 }
 
-.ql-viewer ul > li[data-checked="false"]::before {
+.ql-viewer ul>li[data-checked="false"]::before {
   content: "\2610";
 }
 
-.ql-viewer ol > li,
-.ql-viewer ul > li {
+.ql-viewer ol>li, .ql-viewer ul>li {
   list-style-type: none;
 }
 
@@ -188,45 +177,45 @@ section {
   counter-reset: mylist;
 }
 
-.ql-viewer ol > li:before {
+.ql-viewer ol>li:before {
   counter-increment: mylist;
   content: counter(mylist, decimal) ". ";
 }
 
-.ql-viewer ol ol > li:before {
+.ql-viewer ol ol>li:before {
   content: counter(mylist, lower-alpha) ". ";
 }
 
-.ql-viewer ol ol ol > li:before {
+.ql-viewer ol ol ol>li:before {
   content: counter(mylist, lower-roman) ". ";
 }
 
-.ql-viewer ol ol ol ol > li:before {
+.ql-viewer ol ol ol ol>li:before {
   content: counter(mylist, decimal) ". ";
 }
 
-.ql-viewer ol ol ol ol ol > li:before {
+.ql-viewer ol ol ol ol ol>li:before {
   content: counter(mylist, lower-alpha) ". ";
 }
 
-.ql-viewer ol ol ol ol ol ol > li:before {
+.ql-viewer ol ol ol ol ol ol>li:before {
   content: counter(mylist, lower-roman) ". ";
 }
 
-.ql-viewer ol ol ol ol ol ol ol > li:before {
+.ql-viewer ol ol ol ol ol ol ol>li:before {
   content: counter(mylist, decimal) ". ";
 }
 
-.ql-viewer ol ol ol ol ol ol ol ol > li:before {
+.ql-viewer ol ol ol ol ol ol ol ol>li:before {
   content: counter(mylist, lower-alpha) ". ";
 }
 
-.ql-viewer ol ol ol ol ol ol ol ol ol > li:before {
+.ql-viewer ol ol ol ol ol ol ol ol ol>li:before {
   content: counter(mylist, lower-roman) ". ";
 }
 
 /* ql indent */
-.ql-viewer .ql-indent-1:not(.ql-direction-rtl) {
+/* .ql-viewer .ql-indent-1:not(.ql-direction-rtl) {
   padding-left: 3em;
 }
 
@@ -297,9 +286,10 @@ section {
 .ql-viewer .ql-indent-9.ql-direction-rtl.ql-align-right {
   padding-right: 27em;
 }
-
+ */
 /* video */
-.ql-viewer .ql-video {
+/* .ql-viewer .ql-video {
+
   display: block;
   max-width: 100%;
 }
@@ -311,6 +301,8 @@ section {
 .ql-viewer .ql-video.ql-align-right {
   margin: 0 0 0 auto;
 }
+ */
+
 .collapsible {
   background-color: white;
   color: black;
