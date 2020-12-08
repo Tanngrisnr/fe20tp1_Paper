@@ -12,24 +12,25 @@ let favorites = [];
 const toolbarModifier = [
   ['bold', 'italic', 'underline', 'strike'],
   [{ 'header': [1, 2, 3, false] }],
-  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+  [{ 'list': 'ordered' }, { 'list': 'bullet' }],
   [{ 'align': [] }]
 ]
 
 const quill = new Quill('#editor', {
-  modules : {
+  modules: {
     toolbar: toolbarModifier
   },
   placeholder: 'Compose a note...',
-    theme: 'bubble'
-  });
+  theme: 'bubble'
+});
 
 saveBtn.addEventListener('click', () => {
-    saveNote();
+  saveNote();
+
 
 });
 
-function saveNote(){
+function saveNote() {
   const note = {
     title: getTitle(),
     data: quill.root.innerHTML,
@@ -54,9 +55,9 @@ function renderNotes(items, container) {
     article.setAttribute('class', 'note')
     article.setAttribute('data-key', item.id)
     article.innerHTML = `
-    <h3>${item.title}</h3>
-    <div class="ql-viewer">${item.data}</div>
-    <span class="time">${item.time}</span>
+    <button class="collapsible">${item.title}</button>
+    <div class="ql-viewer note_content">${item.data}</div>
+    <span class="time">Sparat: ${item.time}</span>
     <button class="delete-button">Delete</button>
     <button class="edit-button">Edit</button>
     <button class="favorite-button">Favorite</button>
@@ -80,9 +81,9 @@ function getDate() {
 function getTitle() {
   if (!titleInput.validity.value) {
     let qText = quill.getText()
-    let tempTitle = qText.substr(0,15)
-      return tempTitle;
-    }
+    let tempTitle = qText.substr(0, 15)
+    return tempTitle;
+  }
   else {
     return titleInput.value;
   }
@@ -106,7 +107,7 @@ function getFromLocalStorage() {
 }
 
 function deleteNote(id) {
-  
+
   notes = notes.filter(item => {
     return item.id != id;
   });
@@ -147,11 +148,19 @@ noteList.addEventListener("click", (event) => {
   if (event.target.classList.contains("delete-button")) {
 
     deleteNote(event.target.parentElement.getAttribute("data-key"));
+    return;
   }
   if (event.target.classList.contains("edit-button")) {
-    
-    editNote(event.target.parentElement.getAttribute("data-key"));
 
+    editNote(event.target.parentElement.getAttribute("data-key"));
+    return;
+  }
+  event.target.classList.toggle("active");
+  let note_content = event.target.nextElementSibling;
+  if (note_content.style.maxHeight) {
+    note_content.style.maxHeight = null;
+  } else {
+    note_content.style.maxHeight = note_content.scrollHeight + "px";
   }
   if (event.target.classList.contains("favorite-button")) {
     favoriteNote(event.target.parentElement.getAttribute("data-key"));
@@ -170,5 +179,12 @@ favoriteList.addEventListener("click", (event) => {
     unFavoriteNote(event.target.parentElement.getAttribute("data-key"));
     editNote(event.target.parentElement.getAttribute("data-key"));
     //dasf
+  }
+  event.target.classList.toggle("active");
+  let note_content = event.target.nextElementSibling;
+  if (note_content.style.maxHeight) {
+    note_content.style.maxHeight = null;
+  } else {
+    note_content.style.maxHeight = note_content.scrollHeight + "px";
   }
 })
