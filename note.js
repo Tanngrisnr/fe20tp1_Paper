@@ -1,11 +1,12 @@
 const saveBtn = document.getElementById('save');
 const noteList = document.getElementById('note-list')
+const favoriteList = document.getElementById('favorite-list')
 const titleInput = document.getElementById('title')
 
 
 
-
 let notes = [];
+let favorites = [];
 
 
 const toolbarModifier = [
@@ -27,7 +28,7 @@ const quill = new Quill('#editor', {
 
 saveBtn.addEventListener('click', () => {
     saveNote();
-  
+
 });
 
 function saveNote(){
@@ -35,6 +36,7 @@ function saveNote(){
     title: titleInput.value,
     data: quill.root.innerHTML,
     editorData: quill.getContents(),
+    isFavorite: false,
     id: Date.now(),
     time: getDate(),
   }
@@ -43,6 +45,7 @@ function saveNote(){
   quill.setContents('');
   titleInput.value = '';
 }
+
 
 function renderNotes(items, container) {
   container.innerHTML = ''
@@ -58,6 +61,7 @@ function renderNotes(items, container) {
     <span class="time">${item.time}</span>
     <button class="delete-button">Delete</button>
     <button class="edit-button">Edit</button>
+    <button class="favorite-button">Favorite</button>
     `
 
 
@@ -106,6 +110,27 @@ function editNote(id) {
   titleInput.value = note.title
   deleteNote(id);
 }
+
+function favoriteNote(id){
+  note = notes.find(item => item.id == id)
+  note.isFavorite = true;
+  favorites = notes.filter(item => { 
+  return item.isFavorite === true
+  });
+  renderNotes(favorites, favoriteList);
+}
+
+function unFavoriteNote(id){
+  note = notes.find(item => item.id == id)
+  note.isFavorite = false;
+  favorites = notes.filter(item => { 
+  return item.isFavorite === true
+  });
+  renderNotes(favorites, favoriteList);
+}
+
+
+
 getFromLocalStorage();
 
 noteList.addEventListener("click", (event) => {
@@ -118,4 +143,21 @@ noteList.addEventListener("click", (event) => {
     editNote(event.target.parentElement.getAttribute("data-key"));
 
   }
+  if (event.target.classList.contains("favorite-button")) {
+    favoriteNote(event.target.parentElement.getAttribute("data-key"));
+  }
 });
+
+favoriteList.addEventListener("click", (event) => {
+  if(event.target.classList.contains("favorite-button")) {
+    unFavoriteNote(event.target.parentElement.getAttribute("data-key"));
+  }
+  if(event.target.classList.contains("delete-button")) {
+    unFavoriteNote(event.target.parentElement.getAttribute("data-key"));
+    deleteNote(event.target.parentElement.getAttribute("data-key"));
+  }
+  if (event.target.classList.contains("edit-button")) {
+    unFavoriteNote(event.target.parentElement.getAttribute("data-key"));
+    editNote(event.target.parentElement.getAttribute("data-key"));
+  }
+})
