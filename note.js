@@ -12,25 +12,25 @@ const toolbarModifier = [
   ['bold', 'italic', 'underline', 'strike'],
   [{ 'font': [] }],
   [{ 'header': [1, 2, 3, false] }],
-  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+  [{ 'list': 'ordered' }, { 'list': 'bullet' }],
   [{ 'color': [] }, { 'background': [] }],
   [{ 'align': [] }]
 ]
 
 const quill = new Quill('#editor', {
-  modules : {
+  modules: {
     toolbar: toolbarModifier
   },
   placeholder: 'Compose a note...',
-    theme: 'snow'
-  });
-
-saveBtn.addEventListener('click', () => {
-    saveNote();
-  
+  theme: 'snow'
 });
 
-function saveNote(){
+saveBtn.addEventListener('click', () => {
+  saveNote();
+
+});
+
+function saveNote() {
   const note = {
     title: titleInput.value,
     data: quill.root.innerHTML,
@@ -53,9 +53,9 @@ function renderNotes(items, container) {
     article.setAttribute('class', 'note')
     article.setAttribute('data-key', item.id)
     article.innerHTML = `
-    <h3>${item.title}</h3>
-    <div class="ql-viewer">${item.data}</div>
-    <span class="time">${item.time}</span>
+    <button class="collapsible">${item.title}</button>
+    <div class="ql-viewer note_content">${item.data}</div>
+    <span class="time">Sparat: ${item.time}</span>
     <button class="delete-button">Delete</button>
     <button class="edit-button">Edit</button>
     `
@@ -92,7 +92,7 @@ function getFromLocalStorage() {
 }
 
 function deleteNote(id) {
-  
+
   notes = notes.filter(item => {
     return item.id != id;
   });
@@ -112,10 +112,18 @@ noteList.addEventListener("click", (event) => {
   if (event.target.classList.contains("delete-button")) {
 
     deleteNote(event.target.parentElement.getAttribute("data-key"));
+    return;
   }
   if (event.target.classList.contains("edit-button")) {
-    
-    editNote(event.target.parentElement.getAttribute("data-key"));
 
+    editNote(event.target.parentElement.getAttribute("data-key"));
+    return;
+  }
+  event.target.classList.toggle("active");
+  let note_content = event.target.nextElementSibling;
+  if (note_content.style.maxHeight) {
+    note_content.style.maxHeight = null;
+  } else {
+    note_content.style.maxHeight = note_content.scrollHeight + "px";
   }
 });
