@@ -1,13 +1,13 @@
 :root {
   --bg: white;
-  --txt: lightslategrey;
-  --font: "Times New Roman", Times, serif;
+  --txtcl: lightslategrey;
+  --bodytxt: "Roboto Slab", Times, serif;
+  --heading: "Work Sans", Helvetica, sans-serif;
 }
 
 :root.dark-theme {
-  --font: Helvetica, Arial, sans-serif;
   --bg: lightslategrey;
-  --txt: white;
+  --txtcl: white;
 }
 
 html {
@@ -19,9 +19,9 @@ html {
 }
 
 body {
-  font-family: var(--font);
+  font-family: var(--bodytxt);
   background-color: var(--bg);
-  color: var(--txt);
+  color: var(--txtcl);
   scroll-behavior: smooth;
   scrollbar-width: 1%;
 }
@@ -39,18 +39,18 @@ section {
   display: flex;
   flex-direction: column;
   scroll-behavior: smooth;
-  border: 1px solid white;
 }
 
 #title {
+  font-family: var(--bodytxt);
 }
 
 .ql-editor.ql-blank::before {
-  color: var(--txt);
+  color: var(--txtcl);
 }
 
 .ql-container {
-  font-family: var(--font);
+  font-family: var(--bodytxt);
 }
 
 /* .ql-viewer p,
