@@ -1,12 +1,13 @@
 :root {
   --bg: white;
-  --txt: lightslategrey;
-  --font: "Times New Roman", Times, serif;
+  --detail:lightslategray;
+  --txt: slategray;
+  --bodyfont: "Roboto Slab", Times, serif;
+  --headingfont: "Work Sans", Helvetica, sans-serif;
 }
 
 :root.dark-theme {
-  --font: Helvetica, Arial, sans-serif;
-  --bg: lightslategrey;
+  --bg: slategray;
   --txt: white;
 }
 
@@ -19,11 +20,25 @@ html {
 }
 
 body {
-  font-family: var(--font);
+  font-family: var(--bodyfont);
   background-color: var(--bg);
   color: var(--txt);
   scroll-behavior: smooth;
   scrollbar-width: 1%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--headingfont); !important;
+}
+
+#title {
+  font-family: var(--headingfont);
+  font
 }
 
 main {
@@ -44,7 +59,7 @@ section {
 
 .collapsible {
   background-color: white;
-  color: black;
+  color: ;
   cursor: pointer;
   padding: 10px;
   width: 100%;
@@ -54,9 +69,14 @@ section {
   font-size: 16px;
 }
 
+
+.time {
+  font-size: .75rem;
+}
+
 .active,
 .collapsible:hover {
-  background-color: rgb(189, 189, 189);
+  background-color: ;
 }
 
 .note_content {
@@ -72,7 +92,7 @@ section {
 }
 
 .ql-container {
-  font-family: var(--font);
+  font-family: var(--bodyfont);
 }
 
 /* .ql-viewer p,
