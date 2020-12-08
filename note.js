@@ -169,5 +169,6 @@ favoriteList.addEventListener("click", (event) => {
   if (event.target.classList.contains("edit-button")) {
     unFavoriteNote(event.target.parentElement.getAttribute("data-key"));
     editNote(event.target.parentElement.getAttribute("data-key"));
+    //dasf
   }
 })
