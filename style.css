@@ -1,50 +1,29 @@
-@media only screen and (max-width: 600px) {
-  header {
-    text-align: center;
-    font-family: "Quicksand", sans-serif;
-    font-size: xx-large;
-  }
-  .content {
-    display: flex;
-    flex-direction: column;
-  }
-  #save {
-    margin: 3%;
-    font-size: small;
-    font-weight: bold;
-    border-radius: 1em;
-    border: rgb(245, 243, 245);
-    padding: 15px;
-    cursor: pointer;
-    background: rgb(238, 236, 234);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 2px 3px rgba(0, 0, 0, 0.7);
-  }
-  h2 {
-    text-decoration: underline #acaaaa;
-  }
-  #save:hover {
-    background: rgb(174, 176, 176);
-    background: linear-gradient( 0deg, rgba(174, 176, 176, 1) 0%, rgba(246, 245, 244, 1) 100%);
-  }
-  .ql-toolbar, .ql-snow {
-    max-width: 100%;
-  }
-  #editor {
-    border: solid 1px rgb(204, 203, 203);
-    box-shadow: inset 0 0 10px #e1dfdf;
-    min-width: 100%;
-    height: fit-content;
-  }
+:root {
+  --bg: white;
+  --txtcl: lightslategrey;
+  --bodytxt: "Roboto Slab", Times, serif;
+  --heading: "Work Sans", Helvetica, sans-serif;
 }
 
-header {
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+:root.dark-theme {
+  --bg: lightslategrey;
+  --txtcl: white;
 }
 
-#note-list {
-  padding: 20px;
-  margin: 2%;
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  font-family: var(--bodytxt);
+  background-color: var(--bg);
+  color: var(--txtcl);
+  scroll-behavior: smooth;
+  scrollbar-width: 1%;
 }
 
 #editor {
@@ -53,24 +32,23 @@ header {
 }
 
 section {
-  border-radius: 3rem;
-  box-shadow: inset 0 0 10px #000000;
-  padding: 3%;
-  margin: 5%;
-  font-family: "Quicksand", sans-serif;
-  align-self: center;
-  margin-bottom: 5%;
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
 }
 
-.note {
-  margin: 2%;
-  padding: 5%;
-  border-bottom: 1px solid rgb(162, 158, 158);
+#title {
+  font-family: var(--bodytxt);
 }
 
-.note-title {
-  border: 1px solid black;
-  color: mediumseagreen;
+.ql-editor.ql-blank::before {
+  color: var(--txtcl);
+}
+
+.ql-container {
+  font-family: var(--bodytxt);
 }
 
 .delete-button {
@@ -105,7 +83,7 @@ section {
   background: rgb(174, 176, 176);
   background: linear-gradient( 0deg, rgba(174, 176, 176, 1) 0%, rgba(246, 245, 244, 1) 100%);
 }
-
+/* 
 .ql-viewer p, .ql-viewer ol, .ql-viewer ul, .ql-viewer pre, .ql-viewer blockquote, .ql-viewer h1, .ql-viewer h2, .ql-viewer h3, .ql-viewer h4, .ql-viewer h5, .ql-viewer h6 {
   margin: 0;
   padding: 0;
@@ -220,7 +198,7 @@ section {
 }
 
 /* ql indent */
-
+/* 
 .ql-viewer .ql-indent-1:not(.ql-direction-rtl) {
   padding-left: 3em;
 }
@@ -291,10 +269,10 @@ section {
 
 .ql-viewer .ql-indent-9.ql-direction-rtl.ql-align-right {
   padding-right: 27em;
-}
+} */
 
 /* video */
-
+/* 
 .ql-viewer .ql-video {
   display: block;
   max-width: 100%;
@@ -305,5 +283,5 @@ section {
 }
 
 .ql-viewer .ql-video.ql-align-right {
-  margin: 0 0 0 auto;
-}
+  margin: 0 0 0 auto; */
+} */

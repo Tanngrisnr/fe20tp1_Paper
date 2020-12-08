@@ -80,7 +80,7 @@ function getDate() {
 
 
 function getTitle() {
-  if (!titleInput.validity.value) {
+  if (!titleInput.validity.valid) {
     let qText = quill.getText()
     let tempTitle = qText.substr(0, 15)
     return tempTitle;
