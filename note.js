@@ -33,7 +33,7 @@ saveBtn.addEventListener('click', () => {
  
 function saveNote() {
   const note = {
-    title: getTitle(),
+    title: quill.getText().substr(0,15),
     data: quill.root.innerHTML,
     editorData: quill.getContents(),
     isFavorite: false,
@@ -57,7 +57,7 @@ function renderNotes(items, container) {
     article.setAttribute('data-key', item.id)
     article.innerHTML = `
     <button class="collapsible">${item.title}</button>
-    <div class="ql-viewer note_content">${item.data}</div>
+    <div class="note_content"><div class="ql-viewer">${item.data}</div></div>
     <span class="time">Sparat: ${item.time}</span>
     <button class="delete-button">Delete</button>
     <button class="edit-button">Edit</button>
@@ -81,9 +81,7 @@ function getDate() {
  
 function getTitle() {
   if (!titleInput.validity.valid) {
-    let qText = quill.getText()
-    let tempTitle = qText.substr(0, 15)
-    return tempTitle;
+    return quill.getText().substr(0,12);
   }
   else {
     return titleInput.value;
