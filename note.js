@@ -33,7 +33,7 @@ saveBtn.addEventListener('click', () => {
  
 function saveNote() {
   const note = {
-    title: quill.getText().substr(0,15),
+    title: getTitle(),
     data: quill.root.innerHTML,
     editorData: quill.getContents(),
     isFavorite: false,
@@ -91,7 +91,7 @@ function getDate() {
  
  
 function getTitle() {
-  if (titleInput.value="") {
+  if (titleInput.value === "") {
     return quill.getText().substr(0,12);
   }
   else {
