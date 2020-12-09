@@ -57,17 +57,28 @@ function renderNotes(items, container) {
     article.setAttribute('data-key', item.id)
     article.innerHTML = `
     <button class="collapsible">${item.title}</button>
-    <div class="note_content"><div class="ql-viewer">${item.data}</div></div>
-    <span class="time">Sparat: ${item.time}</span>
+    <div class="note_content" id="${item.id}"><div class="ql-viewer">${item.data}</div><span class="time">Sparat: ${item.time}</span></div>
     <button class="delete-button">Delete</button>
     <button class="edit-button">Edit</button>
     <button class="favorite-button">Favorite</button>
+    <button class="print-button">Print</button>
     `
  
  
     console.log(items);
     container.append(article);
   });
+}
+
+function printNote(noteID) {
+  var printContents = document.getElementById(noteID).innerHTML;
+  var originalContents = document.body.innerHTML;
+
+  document.body.innerHTML = printContents;
+
+  window.print();
+
+  document.body.innerHTML = originalContents;
 }
  
 function getDate() {
@@ -156,6 +167,9 @@ noteList.addEventListener("click", (event) => {
   }
   if (event.target.classList.contains("favorite-button")) {
     favoriteNote(event.target.parentElement.getAttribute("data-key"));
+  }
+  if (event.target.classList.contains("print-button")){
+    printNote(event.target.parentElement.getAttribute("data-key"));
   }
   event.target.classList.toggle("active");
   let note_content = event.target.nextElementSibling;

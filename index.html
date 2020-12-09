@@ -23,32 +23,37 @@
 </head>
 
 <body>
-    <div class="content">
-        <header>
-            <h1>Quire - Quick notes</h1>
-        </header>
-        <main>
-            <section>
-                <h2>Notes editor</h2>
-                <label for="title">
-                    <input placeholder='Title (optional)' id='title' name='title' type="text">
-                </label>
+
+    <header>
+        <h1>Quire - Quick notes</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Notes editor</h2>
+
+            <div id="edit-field"> <input placeholder='Title (optional)' id='title' name='title' type="text">
                 <div id="editor"></div>
                 <button id='save'>Save</button>
-            </section>
+            </div>
+        </section>
 
 
-            <section>
-                <h2>Favorite notes</h2>
-                <div id="favorite-list"></div>
+        <section class="render">
+            <input type="text" id="search" name='search' placeholder="Search">
+            <div class="note-display">
                 <h2>Saved notes</h2>
                 <div id="note-list"></div>
-            </section>
-        </main>
-        <footer>
-            <button id="dm-btn">toggle darkmode</button>
-        </footer>
-    </div>
+            </div>
+            <div class="note-display">
+                <h2>Favorite notes</h2>
+                <div id="favorite-list"></div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <button id="dm-btn">toggle darkmode</button>
+        <button id="ft-btn">Toggle fonts</button>
+    </footer>
 </body>
 
 </html>

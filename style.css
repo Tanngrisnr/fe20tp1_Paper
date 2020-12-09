@@ -1,13 +1,17 @@
 :root {
   --bg: white;
-  --detail: rgb(224, 224, 224);
-  --txt: slategray;
+  --detail: #2c2f33;
+  --accent: #99aab5;
+  --highlight: #fab325;
+  --txt: #23272a;
   --bodyfont: "Roboto Slab", Times, serif;
   --headingfont: "Work Sans", Helvetica, sans-serif;
 }
 
 :root.dark-theme {
-  --bg: slategray;
+  --bg: #2c2f33;
+  --detail: #23272a;
+  --accent: #99aab5;
   --txt: white;
 }
 
@@ -33,6 +37,64 @@ h4,
 h5,
 h6 {
   font-family: var(--headingfont) !important;
+  color: var(--highlight);
+}
+button {
+  font-family: var(--headingfont);
+  border: 1% solid var(--detail);
+  padding: 2.5%;
+}
+
+header {
+  width: 100vw;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
+}
+
+header h1 {
+  margin: 3% auto;
+  text-align: center;
+  font-size: 2.5rem;
+  padding: 5%;
+}
+
+main {
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 0 auto;
+}
+
+footer {
+  width: 100vw;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: row;
+}
+footer button {
+  flex-grow: 1;
+}
+
+section {
+  padding: 2%;
+  margin: 3% auto;
+  width: 90%;
+  height: auto;
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  scroll-behavior: smooth;
+}
+
+.render {
+  flex-direction: row;
 }
 
 #title {
@@ -40,23 +102,31 @@ h6 {
   font-size: 1.25rem;
 }
 
-main {
-  display: flex;
-  flex-flow: column;
-  width: 90%;
-  margin: 0 auto;
+#editor {
+  height: auto;
 }
 
-section {
-  height: 100%;
+#search {
+  align-self: flex-start;
+  text-align: center;
+  width: 100%;
+  margin-top: 8%;
+  flex-shrink: 0;
+}
+
+.note-display {
   flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  scroll-behavior: smooth;
+  flex-basis: 0;
+  padding: 3%;
+  margin: 5%;
+}
+
+.note {
+  background-color: var(--accent);
 }
 
 .collapsible {
-  background-color: var(--detail);
+  background-color: var(--accent);
   color: var(--txt);
   cursor: pointer;
   padding: 10px;
@@ -94,9 +164,12 @@ section {
 }
 
 .ql-viewer {
-  overflow: scroll;
   max-width: 90%;
   overflow-wrap: normal;
+  padding: 0;
+  font-family: var(--bodyfont);
+  margin: 0;
+  margin-bottom: 5%;
 }
 
 .ql-viewer p,
@@ -112,12 +185,6 @@ section {
 .ql-viewer h6 {
   margin: 0;
   padding: 0;
-}
-
-.ql-viewer {
-  padding: 20px 10px;
-  font-family: var(--bodyfont);
-  margin-bottom: 5%;
 }
 
 .ql-viewer .ql-size-small {
