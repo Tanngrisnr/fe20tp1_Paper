@@ -57,7 +57,7 @@ function renderNotes(items, container) {
     article.setAttribute('data-key', item.id)
     article.innerHTML = `
     <button class="collapsible">${item.title}</button>
-    <div class="note_content" id="${item.id}"><div class="ql-viewer">${item.data}</div><span class="time">Sparat: ${item.time}</span></div>
+    <div class="note_content"><div id="${item.id}" class="ql-viewer">${item.data}</div><span class="time">Sparat: ${item.time}</span></div>
     <button class="delete-button">Delete</button>
     <button class="edit-button">Edit</button>
     <button class="favorite-button">Favorite</button>
@@ -171,12 +171,14 @@ noteList.addEventListener("click", (event) => {
   if (event.target.classList.contains("print-button")){
     printNote(event.target.parentElement.getAttribute("data-key"));
   }
-  event.target.classList.toggle("active");
-  let note_content = event.target.nextElementSibling;
-  if (note_content.style.maxHeight) {
-    note_content.style.maxHeight = null;
-  } else {
-    note_content.style.maxHeight = note_content.scrollHeight + "px";
+  if (event.target.classList.contains('collapsible')){
+    event.target.classList.toggle("active");
+    let note_content = event.target.nextElementSibling;
+    if (note_content.style.maxHeight) {
+      note_content.style.maxHeight = null;
+    } else {
+      note_content.style.maxHeight = note_content.scrollHeight + "px";
+    }
   }
 });
  
@@ -195,11 +197,13 @@ favoriteList.addEventListener("click", (event) => {
   if (event.target.classList.contains("print-button")){
     printNote(event.target.parentElement.getAttribute("data-key"));
   }
-  event.target.classList.toggle("active");
-  let note_content = event.target.nextElementSibling;
-  if (note_content.style.maxHeight) {
-    note_content.style.maxHeight = null;
-  } else {
-    note_content.style.maxHeight = note_content.scrollHeight + "px";
+  if (event.target.classList.contains('collapsible')){
+    event.target.classList.toggle("active");
+    let note_content = event.target.nextElementSibling;
+    if (note_content.style.maxHeight) {
+      note_content.style.maxHeight = null;
+    } else {
+      note_content.style.maxHeight = note_content.scrollHeight + "px";
+    }
   }
 })
