@@ -10,8 +10,8 @@
 
 :root.dark-theme {
   --bg: #2c2f33;
-  --detail: #23272a;
-  --accent: #99aab5;
+  --detail: #99aab5;
+  --accent: #23272a;
   --txt: white;
 }
 

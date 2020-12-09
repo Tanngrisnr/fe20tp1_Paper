@@ -91,7 +91,7 @@ function getDate() {
  
  
 function getTitle() {
-  if (!titleInput.validity.valid) {
+  if (titleInput.value="") {
     return quill.getText().substr(0,12);
   }
   else {
@@ -191,6 +191,9 @@ favoriteList.addEventListener("click", (event) => {
   if (event.target.classList.contains("edit-button")) {
     unFavoriteNote(event.target.parentElement.getAttribute("data-key"));
     editNote(event.target.parentElement.getAttribute("data-key"));
+  }
+  if (event.target.classList.contains("print-button")){
+    printNote(event.target.parentElement.getAttribute("data-key"));
   }
   event.target.classList.toggle("active");
   let note_content = event.target.nextElementSibling;
