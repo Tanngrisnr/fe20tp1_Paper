@@ -2,7 +2,7 @@
   --bg: #99aab5;
   --detail: #2c2f33;
   --accent: white;
-  --highlight: #fab325;
+  --highlight: #870c25;
   --txt: #23272a;
   --bodyfont: "Roboto Slab", Times, serif;
   --headingfont: "Work Sans", Helvetica, sans-serif;
@@ -12,6 +12,7 @@
   --bg: #23272a;
   --detail: #99aab5;
   --accent: #2c2f33;
+  --highlight: #fab325;
   --txt: white;
 }
 :root.serif-theme {
@@ -429,26 +430,4 @@ section {
 
 .ql-viewer .ql-video.ql-align-right {
   margin: 0 0 0 auto;
-}
-#modal {
-    position: fixed;
-    font-family: var(--headingfont);
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 99999;
-    height: 100%;
-    width: 100%;
-}
-.modalconent {
-    position: absolute;
-    font-family: var(--bodyfont);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--bg);
-    width: 90%;
-    height: 70%;
-    padding: 20px;
-    color: var(--txt);
 }
