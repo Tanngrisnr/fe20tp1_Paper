@@ -430,3 +430,25 @@ section {
 .ql-viewer .ql-video.ql-align-right {
   margin: 0 0 0 auto;
 }
+#modal {
+    position: fixed;
+    font-family: var(--headingfont);
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    height: 100%;
+    width: 100%;
+}
+.modalconent {
+    position: absolute;
+    font-family: var(--bodyfont);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg);
+    width: 90%;
+    height: 70%;
+    padding: 20px;
+    color: var(--txt);
+}
