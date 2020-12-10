@@ -1,7 +1,7 @@
 :root {
-  --bg: white;
+  --bg: #99aab5;
   --detail: #2c2f33;
-  --accent: #99aab5;
+  --accent: white;
   --highlight: #fab325;
   --txt: #23272a;
   --bodyfont: "Roboto Slab", Times, serif;
@@ -9,10 +9,37 @@
 }
 
 :root.dark-theme {
-  --bg: #2c2f33;
+  --bg: #23272a;
   --detail: #99aab5;
-  --accent: #23272a;
+  --accent: #2c2f33;
   --txt: white;
+}
+:root.serif-theme {
+  --headingfont: "Roboto Slab", Times, serif;
+  --bodyfont: "Work Sans", Helvetica, sans-serif;
+}
+
+@media print {
+  @page {
+    size: A4;
+  }
+
+  h1,
+  h2,
+  h3 {
+    page-break-after: avoid;
+    color: black !important;
+    background-color: white !important;
+  }
+
+  p {
+    color: black !important;
+    background-color: white !important;
+  }
+  ul {
+    color: black !important;
+    background-color: white !important;
+  }
 }
 
 html {
@@ -24,10 +51,18 @@ html {
 }
 
 body {
+  margin: 0;
+  padding: 0;
   font-family: var(--bodyfont);
   background-color: var(--bg);
   color: var(--txt);
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  transition: 0.5s background;
+}
+
+body > * {
+  transition: 0.5s background;
 }
 
 h1,
@@ -36,13 +71,19 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--headingfont) !important;
   color: var(--highlight);
+  font-family: var(--headingfont) !important;
 }
 button {
+  border: 0;
+  color: var(--txt);
+  background-color: var(--accent);
   font-family: var(--headingfont);
-  border: 1% solid var(--detail);
   padding: 2.5%;
+}
+button:hover {
+  background-color: var(--detail);
+  color: var(--bg);
 }
 
 header {
@@ -63,9 +104,9 @@ header h1 {
 
 main {
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
   flex-wrap: wrap;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -77,14 +118,24 @@ footer {
   align-items: center;
   flex-direction: row;
 }
+
 footer button {
   flex-grow: 1;
+  color: var(--txt);
+  background-color: var(--accent);
+  margin: 5%;
+  border-radius: 2vmax;
+  transition: color 0.5s;
+  transition: background 0.5s;
+}
+
+footer button:hover {
+  background-color: var(--detail);
+  color: var(--bg);
 }
 
 section {
-  padding: 2%;
-  margin: 3% auto;
-  width: 90%;
+  padding: 5%;
   height: auto;
   flex-grow: 1;
   display: flex;
@@ -100,10 +151,6 @@ section {
 #title {
   font-family: var(--headingfont);
   font-size: 1.25rem;
-}
-
-#editor {
-  height: auto;
 }
 
 #search {
@@ -123,6 +170,7 @@ section {
 
 .note {
   background-color: var(--accent);
+  border-bottom: 0.1vmax solid var(--detail);
 }
 
 .collapsible {
@@ -155,12 +203,25 @@ section {
   background-color: var(--bg);
 }
 
-.ql-editor.ql-blank::before {
+#editor {
+  min-height: 400px;
+  padding: 2%;
+  border-radius: 5vmax;
+  background-color: var(--accent);
+}
+
+#editor h1,
+#editor h2,
+#editor h3 {
   color: var(--txt);
 }
 
-.ql-container {
-  font-family: var(--bodyfont);
+#editor > * {
+  color: var(--txt);
+}
+
+.ql-editor.ql-blank::before {
+  color: var(--txt);
 }
 
 .ql-viewer {
@@ -185,6 +246,7 @@ section {
 .ql-viewer h6 {
   margin: 0;
   padding: 0;
+  color: var(--txt);
 }
 
 .ql-viewer .ql-size-small {

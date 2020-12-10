@@ -7,7 +7,23 @@ const titleInput = document.getElementById('title')
  
 let notes = [];
 let favorites = [];
- 
+
+
+let Clipboard = Quill.import('modules/clipboard');
+let Delta = Quill.import('delta');
+
+class PlainClipboard extends Clipboard {
+  convert(html = null) {
+    if (typeof html === 'string') {
+      this.container.innerHTML = html;
+    }
+    let text = this.container.innerText;
+    this.container.innerHTML = '';
+    return new Delta().insert(text);
+  }
+}
+
+Quill.register('modules/clipboard', PlainClipboard, true);
  
 const toolbarModifier = [
   ['bold', 'italic', 'underline', 'strike'],
@@ -16,14 +32,16 @@ const toolbarModifier = [
   [{ 'align': [] }],
   [ 'link', 'image', 'video', 'formula' ]
 ]
- 
+
 const quill = new Quill('#editor', {
   modules: {
-    toolbar: toolbarModifier
+    toolbar: toolbarModifier,
   },
   placeholder: 'Compose a note...',
   theme: 'bubble'
 });
+
+ 
  
 saveBtn.addEventListener('click', () => {
   saveNote();
@@ -50,7 +68,7 @@ function saveNote() {
 function renderNotes(items, container) {
   container.innerHTML = ''
  
-  items.forEach(item => {
+  items.reverse().forEach(item => {
     const article = document.createElement('article')
  
     article.setAttribute('class', 'note')
@@ -70,9 +88,10 @@ function renderNotes(items, container) {
   });
 }
 
+
 function printNote(noteID) {
-  var printContents = document.getElementById(noteID).innerHTML;
-  var originalContents = document.body.innerHTML;
+let printContents = document.getElementById(noteID).innerHTML;
+  let originalContents = document.body.innerHTML;
 
   document.body.innerHTML = printContents;
 
