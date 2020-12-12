@@ -44,8 +44,13 @@ const quill = new Quill('#editor', {
  
  
 saveBtn.addEventListener('click', () => {
-  saveNote();
- 
+
+
+  if (quill.getText().length <= 1) {
+    quill.root.dataset.placeholder = 'you need to write something...';
+  } else {
+    saveNote();
+  }
  
 });
  
@@ -75,7 +80,7 @@ function renderNotes(items, container) {
     article.setAttribute('data-key', item.id)
     article.innerHTML = `
     <button class="collapsible">${item.title} </button>
-    <div class="note_content"><span class="time">Sparat: ${item.time}</span><div id="${item.id}" class="ql-viewer">${item.data}</div></div>
+    <div class="note_content"><span class="time">Saved: ${item.time}</span><div id="${item.id}" class="ql-viewer">${item.data}</div></div>
     <div class="note-options" data-key="${item.id}">    
     <button class="delete-button">Delete</button>
     <button class="edit-button">Edit</button>
@@ -113,9 +118,12 @@ function getDate() {
  
 function getTitle() {
   if (titleInput.value === "") {
-    return quill.getText().substr(0,12);
+    return quill.getText().substr(0,12) + "...";
   }
-  else {
+  else if (titleInput.value.length > 30) {
+    return titleInput.value.substr(0,30) + "...";
+    
+  } else {
     return titleInput.value;
   }
 }

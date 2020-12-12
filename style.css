@@ -107,20 +107,39 @@ main {
 }
 
 .render {
-  min-height: 100%;
+  min-height: 0;
   background-color: var(--accent);
-  overflow-y: scroll;
-
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: space-around;
-  width: 25%;
+  max-width: 25%;
+  overflow-y: scroll;
+}
+
+.edit-field {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 #title {
+  flex-grow: 2;
   font-family: var(--headingfont);
   font-size: 1.25rem;
+  border: 0;
+  border-bottom: 2px solid var(--txt);
+  background-color: var(--bg);
+  color: var(--txt);
+}
+
+#title::placeholder {
+  color: var(--txt);
+}
+
+#save {
+  border-radius: 3%;
+  flex-basis: 0;
+  flex-grow: 1;
 }
 
 #search {
