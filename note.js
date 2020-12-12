@@ -76,10 +76,12 @@ function renderNotes(items, container) {
     article.innerHTML = `
     <button class="collapsible">${item.title} </button>
     <div class="note_content"><span class="time">Sparat: ${item.time}</span><div id="${item.id}" class="ql-viewer">${item.data}</div></div>
+    <div class="note-options" data-key="${item.id}">    
     <button class="delete-button">Delete</button>
     <button class="edit-button">Edit</button>
     <button class="favorite-button">Favorite</button>
     <button class="print-button">Print</button>
+    </div>
     `
  
  

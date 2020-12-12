@@ -10,8 +10,8 @@
 
 :root.dark-theme {
   --bg: #23272a;
-  --detail: #2c2f33;
-  --accent: #42474c;
+  --detail: #42474c;
+  --accent: #2c2f33;
   --txt: white;
 }
 :root.serif-theme {
@@ -44,6 +44,7 @@
 
 * {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 html {
@@ -79,15 +80,16 @@ h6 {
   font-family: var(--headingfont) !important;
 }
 button {
+  margin: 0;
   border: 0;
-  color: var(--highlight);
+  color: white;
   background-color: var(--detail);
   font-family: var(--headingfont);
   padding: 2.5%;
 }
 button:hover {
   background-color: var(--accent);
-  color: var(--bg);
+  color: var(--highlight);
 }
 
 main {
@@ -99,15 +101,6 @@ main {
   margin: 0 auto;
 }
 
-footer {
-  width: 100vw;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  flex-direction: row;
-}
-
 .quire-editor {
   padding: 2.5% 5%;
   width: 75%;
@@ -117,6 +110,7 @@ footer {
   min-height: 100%;
   background-color: var(--accent);
   overflow-y: scroll;
+
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -146,14 +140,12 @@ footer {
 
 .note {
   background-color: var(--accent);
-  border-bottom: 0.1vmax solid var(--detail);
+  border-bottom: 0.1vmax solid var(--bg);
 }
 
 .collapsible {
-  background-color: var(--accent);
-  color: var(--highlight);
   cursor: pointer;
-  padding: 10px;
+  padding: 3%;
   width: 100%;
   border: none;
   text-align: left;
@@ -178,6 +170,18 @@ footer {
   overflow-y: scroll;
   transition: max-height 0.2s ease-out;
   background-color: var(--bg);
+}
+
+.note-options {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.note-options button {
+  flex-basis: 0;
+  flex-grow: 1;
 }
 
 #editor {
