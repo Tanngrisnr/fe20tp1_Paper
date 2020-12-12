@@ -74,8 +74,8 @@ function renderNotes(items, container) {
     article.setAttribute('class', 'note')
     article.setAttribute('data-key', item.id)
     article.innerHTML = `
-    <button class="collapsible">${item.title}</button>
-    <div class="note_content"><div id="${item.id}" class="ql-viewer">${item.data}</div><span class="time">Sparat: ${item.time}</span></div>
+    <button class="collapsible">${item.title} </button>
+    <div class="note_content"><span class="time">Sparat: ${item.time}</span><div id="${item.id}" class="ql-viewer">${item.data}</div></div>
     <button class="delete-button">Delete</button>
     <button class="edit-button">Edit</button>
     <button class="favorite-button">Favorite</button>
@@ -196,7 +196,7 @@ noteList.addEventListener("click", (event) => {
     if (note_content.style.maxHeight) {
       note_content.style.maxHeight = null;
     } else {
-      note_content.style.maxHeight = note_content.scrollHeight + "px";
+      note_content.style.maxHeight = "300px";
     }
   }
 });
@@ -222,7 +222,7 @@ favoriteList.addEventListener("click", (event) => {
     if (note_content.style.maxHeight) {
       note_content.style.maxHeight = null;
     } else {
-      note_content.style.maxHeight = note_content.scrollHeight + "px";
+      note_content.style.maxHeight = '300px';
     }
   }
 })

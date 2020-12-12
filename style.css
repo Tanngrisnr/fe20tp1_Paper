@@ -1,18 +1,17 @@
 :root {
-  --bg: #99aab5;
-  --detail: #2c2f33;
-  --accent: white;
-  --highlight: #870c25;
+  --bg: white;
+  --detail: #42474c;
+  --accent: #2c2f33;
   --txt: #23272a;
+  --highlight: #fab325;
   --bodyfont: "Roboto Slab", Times, serif;
   --headingfont: "Work Sans", Helvetica, sans-serif;
 }
 
 :root.dark-theme {
   --bg: #23272a;
-  --detail: #99aab5;
-  --accent: #2c2f33;
-  --highlight: #fab325;
+  --detail: #2c2f33;
+  --accent: #42474c;
   --txt: white;
 }
 :root.serif-theme {
@@ -41,6 +40,10 @@
     color: black !important;
     background-color: white !important;
   }
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html {
@@ -77,37 +80,22 @@ h6 {
 }
 button {
   border: 0;
-  color: var(--txt);
-  background-color: var(--accent);
+  color: var(--highlight);
+  background-color: var(--detail);
   font-family: var(--headingfont);
   padding: 2.5%;
 }
 button:hover {
-  background-color: var(--detail);
+  background-color: var(--accent);
   color: var(--bg);
-}
-
-header {
-  width: 100vw;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  flex-direction: column;
-}
-
-header h1 {
-  margin: 3% auto;
-  text-align: center;
-  font-size: 2.5rem;
-  padding: 5%;
 }
 
 main {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   margin: 0 auto;
 }
 
@@ -120,33 +108,20 @@ footer {
   flex-direction: row;
 }
 
-footer button {
-  flex-grow: 1;
-  color: var(--txt);
-  background-color: var(--accent);
-  margin: 5%;
-  border-radius: 2vmax;
-  transition: color 0.5s;
-  transition: background 0.5s;
-}
-
-footer button:hover {
-  background-color: var(--detail);
-  color: var(--bg);
-}
-
-section {
-  padding: 5%;
-  height: auto;
-  flex-grow: 1;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  scroll-behavior: smooth;
+.quire-editor {
+  padding: 2.5% 5%;
+  width: 75%;
 }
 
 .render {
-  flex-direction: row;
+  min-height: 100%;
+  background-color: var(--accent);
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 25%;
 }
 
 #title {
@@ -176,7 +151,7 @@ section {
 
 .collapsible {
   background-color: var(--accent);
-  color: var(--txt);
+  color: var(--highlight);
   cursor: pointer;
   padding: 10px;
   width: 100%;
@@ -200,15 +175,13 @@ section {
   padding: 0 18px;
   max-height: 0;
   overflow: hidden;
+  overflow-y: scroll;
   transition: max-height 0.2s ease-out;
   background-color: var(--bg);
 }
 
 #editor {
-  min-height: 400px;
-  padding: 2%;
-  border-radius: 5vmax;
-  background-color: var(--accent);
+  background-color: var(--bg);
 }
 
 #editor h1,
