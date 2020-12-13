@@ -40,7 +40,7 @@
     </div>
 
     <main>
-        <section class="quire-editor">
+        <section>
             <h1>Quire - Quick notes</h1>
 
             <div id="edit-field"> <input placeholder='Title (optional)' id='title' name='title' type="text">
@@ -50,21 +50,22 @@
         </section>
 
 
-        <section class="render">
-            <input type="text" id="search" name='search' placeholder="Search">
-            <div class="note-display">
-                <h2>Saved notes</h2>
-                <div id="note-list"></div>
-            </div>
-            <div class="note-display">
-                <h2>Favorite notes</h2>
-                <div id="favorite-list"></div>
-            </div>
-            <div class='theme'>
-                <button id='dm-btn'>Dark mode</button>
-                <button id='ft-btn'>Font mode</button>
-            </div>
-        </section>
+        <aside>
+
+            <header><button>Saved Notes</button><button>Favorite Notes</button></head>
+
+                <div class="note-display">
+                    <h2>Saved notes</h2>
+                    <div id="note-list"></div>
+                    <h2>Favorite notes</h2>
+                    <div id="favorite-list"></div>
+                </div>
+
+                <div class='theme'>
+                    <button id='dm-btn'>Dark mode</button>
+                    <button id='ft-btn'>Font mode</button>
+                </div>
+        </aside>
     </main>
 </body>
 
