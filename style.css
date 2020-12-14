@@ -192,6 +192,18 @@ aside header button {
   margin-bottom: 2%;
 }
 
+input[type="text"] {
+  width: 30%;
+  -webkit-transition: width 0.15s ease-in-out;
+  transition: width 0.15s ease-in-out;
+}
+
+/* When the input field gets focus, 
+     change its width to 100% */
+input[type="text"]:focus {
+  width: 70%;
+}
+
 aside footer {
   flex-shrink: 1;
   margin: 0;
@@ -519,4 +531,9 @@ aside footer button {
   height: 70%;
   padding: 20px;
   color: var(--txt);
+}
+
+#note-display {
+  font-size: 1.5em;
+  margin-left: 90px;
 }
