@@ -2,6 +2,7 @@ const saveBtn = document.getElementById('save');
 const noteList = document.getElementById('note-list')
 const favoriteList = document.getElementById('favorite-list')
 const titleInput = document.getElementById('title')
+const header = document.getElementById('sidebar-header')
  
  
  
@@ -50,6 +51,7 @@ saveBtn.addEventListener('click', () => {
     quill.root.dataset.placeholder = 'you need to write something...';
   } else {
     saveNote();
+    quill.root.dataset.placeholder = 'Compose a note...';
   }
  
 });
@@ -98,13 +100,12 @@ function renderNotes(items, container) {
 
 function printNote(noteID) {
 let printContents = document.getElementById(noteID).innerHTML;
-  let originalContents = document.body.innerHTML;
 
   document.body.innerHTML = printContents;
 
   window.print();
+  location.reload()
 
-  document.body.innerHTML = originalContents;
 }
  
 function getDate() {
@@ -235,4 +236,23 @@ favoriteList.addEventListener("click", (event) => {
       note_content.style.maxHeight = '300px';
     }
   }
+})
+
+header.addEventListener('click', (event)=>{
+  if(event.target.classList.contains('show-all')) {
+    if (!event.target.classList.contains('active-display')) {
+      event.target.classList.toggle('active-display');
+      event.target.nextElementSibling.classList.remove('active-display')
+      noteList.style.display = "flex"
+      favoriteList.style.display = "none"
+    }
+  }
+  if(event.target.classList.contains("show-favorites")) {
+    if (!event.target.classList.contains('active-display')) {
+      event.target.classList.toggle('active-display');
+      event.target.previousElementSibling.classList.remove('active-display')
+      noteList.style.display = "none"
+      favoriteList.style.display = "flex"
+    }
+}
 })

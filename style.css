@@ -85,6 +85,7 @@ h6 {
   font-family: var(--headingfont) !important;
 }
 button {
+  cursor: pointer;
   margin: 0;
   border: 0;
   color: white;
@@ -111,7 +112,10 @@ main {
 
 section,
 aside {
-  overflow: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  overflow: scroll;
   height: auto;
   padding: 0.5rem;
   -webkit-overflow-scrolling: touch;
@@ -135,7 +139,7 @@ section {
   font-size: 1.25rem;
   border: 0;
   border-bottom: 2px solid var(--txt);
-  background-color: var(--bg);
+  background: 0;
   color: var(--txt);
 }
 
@@ -145,57 +149,98 @@ section {
 
 #save {
   border-radius: 3%;
-  flex-basis: 0;
+  flex-basis: auto;
   flex-grow: 1;
 }
 
 aside {
+  padding: 0;
+  justify-content: flex-start;
+  align-content: flex-start;
   width: 25%;
   max-width: 25%;
+  flex-basis: auto;
   background-color: var(--accent);
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+  box-shadow: -1px 0 5px 5px #141414;
 }
 
 aside header {
-  flex-grow: 1;
-}
-aside footer {
-  flex-grow: 1;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding-bottom: 0;
+  background-color: var(--detail);
 }
 
-/* 
+aside header button {
+  flex-grow: 1;
+  padding-bottom: 10%;
+}
+
+.active-display {
+  background-color: var(--accent);
+  color: var(--highlight);
+}
+
 #search {
   align-self: flex-start;
-  text-align: center;
-  width: 100%;
-  margin-top: 8%;
-  flex-shrink: 0;
-} */
+  min-width: 90%;
+  font-size: 1.1rem;
+  margin: 0 auto;
+  margin-top: 3%;
+  margin-bottom: 2%;
+}
 
-.note-display {
+aside footer {
+  flex-shrink: 1;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+aside footer button {
+  flex-grow: 1;
+  margin: 3%;
+  border-radius: 25vw;
+}
+
+.note-wrapper {
+  display: flex;
+  flex-direction: column;
   min-height: 0;
   flex-grow: 2;
   overflow: auto;
-  flex-basis: 0;
+  flex-basis: auto;
   padding: 3%;
+  padding-top: 0;
   margin: 5%;
+  margin-top: 2%;
+}
+
+.note-wrapper > div {
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 0;
+  transition: 2s display;
 }
 
 .note {
+  flex-grow: 1;
   background-color: var(--accent);
-  border-bottom: 0.1vmax solid var(--bg);
+  margin-bottom: 2%;
+  display: flex;
+  flex-direction: column;
 }
 
 .collapsible {
-  cursor: pointer;
-  padding: 3%;
+  padding: 5%;
   width: 100%;
   border: none;
   text-align: left;
   outline: none;
-  font-size: 16px;
+  font-size: 1.1em;
 }
 
 .time {
@@ -218,19 +263,18 @@ aside footer {
 }
 
 .note-options {
+  font-size: 1em;
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: space-between;
 }
 
 .note-options button {
-  flex-basis: 0;
-  flex-grow: 1;
+  flex: 1 1 auto;
 }
 
 #editor {
-  background-color: var(--bg);
+  background: 0;
 }
 
 #editor h1,

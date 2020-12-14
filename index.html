@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="//cdn.quilljs.com/1.3.6/quill.bubble.css">
     <script defer src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <link rel="stylesheet" href="style.css">
-    <!--     <link rel="stylesheet" href="mobile.css"> -->
     <script src="note.js" defer></script>
     <script src="theme.js" defer></script>
     <script src="a11y.js" defer></script>
@@ -52,19 +51,20 @@
 
         <aside>
 
-            <header><button>Saved Notes</button><button>Favorite Notes</button></head>
+            <header id="sidebar-header"><input type="text" name="search" id="search" placeholder="Search...">
+                <button class='show-all active-display'>Saved Notes</button>
+                <button class='show-favorites'>Favorite Notes</button>
+            </header>
 
-                <div class="note-display">
-                    <h2>Saved notes</h2>
-                    <div id="note-list"></div>
-                    <h2>Favorite notes</h2>
-                    <div id="favorite-list"></div>
-                </div>
+            <div class="note-wrapper">
+                <div id="note-list"></div>
+                <div id="favorite-list"></div>
+            </div>
 
-                <div class='theme'>
-                    <button id='dm-btn'>Dark mode</button>
-                    <button id='ft-btn'>Font mode</button>
-                </div>
+            <footer>
+                <button id='dm-btn'>Dark mode</button>
+                <button id='ft-btn'>Font mode</button>
+            </footer>
         </aside>
     </main>
 </body>
