@@ -243,7 +243,7 @@ header.addEventListener('click', (event)=>{
     if (!event.target.classList.contains('active-display')) {
       event.target.classList.toggle('active-display');
       event.target.nextElementSibling.classList.remove('active-display')
-      noteList.style.display = "flex"
+      noteList.style.display = "initial"
       favoriteList.style.display = "none"
     }
   }
@@ -252,7 +252,7 @@ header.addEventListener('click', (event)=>{
       event.target.classList.toggle('active-display');
       event.target.previousElementSibling.classList.remove('active-display')
       noteList.style.display = "none"
-      favoriteList.style.display = "flex"
+      favoriteList.style.display = "initial"
     }
 }
 })

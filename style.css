@@ -1,3 +1,4 @@
+/*Color themes set as custom properties*/
 :root {
   --bg: white;
   --detail: #42474c;
@@ -18,6 +19,8 @@
   --headingfont: "Roboto Slab", Times, serif;
   --bodyfont: "Work Sans", Helvetica, sans-serif;
 }
+
+/*print media quiries*/
 
 @media print {
   @page {
@@ -41,7 +44,7 @@
     background-color: white !important;
   }
 }
-
+/*general styling */
 * {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -97,35 +100,59 @@ button:hover {
   background-color: var(--accent);
   color: var(--highlight);
 }
+@media not all and (pointer: coarse) {
+  button:hover {
+    background-color: var(--accent);
+    color: var(--highlight);
+  }
+}
+
+input[type="text"] {
+  width: 30%;
+  -webkit-transition: width 0.15s ease-in-out;
+  transition: width 0.15s ease-in-out;
+}
+
+/* When the input field gets focus, 
+     change its width to 100% */
+input[type="text"]:focus {
+  width: 70%;
+}
+
+/*page layout*/
 
 main {
   display: flex;
-  overflow: hidden;
-  height: 100vh;
-  /*   margin-top: -100px;
-  padding-top: 100px; */
-  position: relative;
-  width: 100%;
-  backface-visibility: hidden;
-  will-change: overflow;
-}
 
-section,
-aside {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  overflow: scroll;
-  height: auto;
-  padding: 0.5rem;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: none;
+  justify-content: stretch;
 }
 
 section {
   padding: 2.5% 5%;
-  flex: 1;
+  width: 75%;
 }
+
+aside {
+  width: 25%;
+  background-color: var(--accent);
+  box-shadow: -1px 0 5px 5px #141414;
+}
+
+@media only screen and (max-width: 992px) {
+  main {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+  section {
+    width: 100%;
+  }
+  aside {
+    width: 100%;
+    max-height: 25%;
+  }
+}
+/*inside editor*/
 
 .edit-field {
   display: flex;
@@ -153,17 +180,25 @@ section {
   flex-grow: 1;
 }
 
-aside {
-  padding: 0;
-  justify-content: flex-start;
-  align-content: flex-start;
-  width: 25%;
-  max-width: 25%;
-  flex-basis: auto;
-  background-color: var(--accent);
-  box-shadow: -1px 0 5px 5px #141414;
+#editor {
+  background: 0;
+  max-width: 90%;
 }
 
+#editor h1,
+#editor h2,
+#editor h3 {
+  color: var(--txt);
+}
+
+#editor > * {
+  color: var(--txt);
+}
+.ql-editor.ql-blank::before {
+  color: var(--txt);
+}
+
+/*inside sidebar*/
 aside header {
   margin: 0;
   display: flex;
@@ -173,13 +208,44 @@ aside header {
   background-color: var(--detail);
 }
 
-aside header button {
+aside header .display-button {
   flex-grow: 1;
   padding-bottom: 10%;
   font-size: 1.3em;
   text-align: center;
   font-weight: bold;
   vertical-align: text-bottom;
+}
+
+#dm-btn,
+#ft-btn {
+  font-size: 1rem;
+  border-radius: 2vw;
+  background-color: var(--txt);
+  color: var(--bg);
+  padding: 2%;
+  flex-grow: 1;
+  margin: 2% 5%;
+}
+
+#dm-btn:hover,
+#ft-btn:hover {
+  background-color: var(--bg);
+  color: var(--txt);
+}
+
+#dm-btn::before {
+  content: "Dark ";
+}
+#ft-btn::before {
+  content: "Sans ";
+}
+
+.dark-theme #dm-btn::before {
+  content: "Light ";
+}
+.serif-theme #ft-btn::before {
+  content: "Serif ";
 }
 
 .active-display {
@@ -196,58 +262,20 @@ aside header button {
   margin-bottom: 2%;
 }
 
-input[type="text"] {
-  width: 30%;
-  -webkit-transition: width 0.15s ease-in-out;
-  transition: width 0.15s ease-in-out;
-}
-
-/* When the input field gets focus, 
-     change its width to 100% */
-input[type="text"]:focus {
-  width: 70%;
-}
-
-aside footer {
-  flex-shrink: 1;
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-aside footer button {
-  flex-grow: 1;
-  margin: 3%;
-  border-radius: 25vw;
-}
-
 .note-wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 0;
-  flex-grow: 2;
   overflow: auto;
-  flex-basis: auto;
-  padding: 3%;
-  padding-top: 0;
-  margin: 5%;
-  margin-top: 2%;
+  background-color: var(--accent);
+  width: 100%;
+  padding: 5%;
 }
 
-.note-wrapper > div {
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 0;
-  transition: 2s display;
-}
+/*Note rendering*/
 
 .note {
-  flex-grow: 1;
   background-color: var(--accent);
   margin-bottom: 2%;
-  display: flex;
-  flex-direction: column;
 }
 
 .collapsible {
@@ -270,7 +298,7 @@ aside footer button {
 }
 
 .note_content {
-  padding: 0 18px;
+  padding: 0 1.2;
   max-height: 0;
   overflow: hidden;
   overflow-y: scroll;
@@ -298,24 +326,7 @@ aside footer button {
 .note-options button {
   flex: 1 1 auto;
 }
-
-#editor {
-  background: 0;
-}
-
-#editor h1,
-#editor h2,
-#editor h3 {
-  color: var(--txt);
-}
-
-#editor > * {
-  color: var(--txt);
-}
-
-.ql-editor.ql-blank::before {
-  color: var(--txt);
-}
+/*Pop up styling*/
 
 #modal {
   position: fixed;
@@ -338,9 +349,4 @@ aside footer button {
   height: 70%;
   padding: 20px;
   color: var(--txt);
-}
-
-#note-display {
-  font-size: 1.5em;
-  margin-left: 90px;
 }

@@ -51,9 +51,12 @@
 
         <aside>
 
-            <header id="sidebar-header"><input type="text" name="search" id="search" placeholder="Search...">
-                <button class='show-all active-display'>Saved Notes</button>
-                <button class='show-favorites'>Favorite Notes</button>
+            <header id="sidebar-header">
+                <button id='dm-btn'>mode</button>
+                <button id='ft-btn'>mode</button>
+                <input type="text" name="search" id="search" placeholder="Search...">
+                <button class='display-button show-all active-display'>Saved Notes</button>
+                <button class='display-button show-favorites'>Favorite Notes</button>
             </header>
 
             <div class="note-wrapper">
@@ -61,10 +64,6 @@
                 <div id="favorite-list"></div>
             </div>
 
-            <footer>
-                <button id='dm-btn'>Dark mode</button>
-                <button id='ft-btn'>Font mode</button>
-            </footer>
         </aside>
     </main>
 </body>
