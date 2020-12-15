@@ -20,36 +20,11 @@
   --bodyfont: "Work Sans", Helvetica, sans-serif;
 }
 
-/*print media quiries*/
-
-@media print {
-  @page {
-    size: A4;
-  }
-
-  h1,
-  h2,
-  h3 {
-    page-break-after: avoid;
-    color: black !important;
-    background-color: white !important;
-  }
-
-  p {
-    color: black !important;
-    background-color: white !important;
-  }
-  ul {
-    color: black !important;
-    background-color: white !important;
-  }
-}
 /*general styling */
 * {
   box-sizing: border-box;
   scroll-behavior: smooth;
   -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -300,7 +275,7 @@ aside header .display-button {
 }
 
 .note_content {
-  padding: 0 1.2;
+  padding: 0 1.2em;
   max-height: 0;
   overflow: hidden;
   overflow-y: scroll;
