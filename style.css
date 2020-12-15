@@ -95,6 +95,7 @@ button {
   background-color: var(--detail);
   font-family: var(--headingfont);
   padding: 2.5%;
+  transition: 0.5s background;
 }
 button:hover {
   background-color: var(--accent);
