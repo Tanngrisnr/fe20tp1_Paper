@@ -186,7 +186,7 @@ getFromLocalStorage();
  
 noteList.addEventListener("click", (event) => {
   if (event.target.classList.contains("delete-button")) {
- 
+    unFavoriteNote(event.target.parentElement.getAttribute("data-key"));
     deleteNote(event.target.parentElement.getAttribute("data-key"));
     return;
   }
