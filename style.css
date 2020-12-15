@@ -133,6 +133,9 @@ section {
 }
 
 aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 25%;
   background-color: var(--accent);
   box-shadow: -1px 0 5px 5px #141414;
