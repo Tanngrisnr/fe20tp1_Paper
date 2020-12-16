@@ -65,7 +65,7 @@ function saveNote() {
     id: Date.now(),
     time: getDate(),
   }
-  notes.push(note);
+  notes.unshift(note);
   addToLocalStorage(notes);
   quill.setContents('');
   titleInput.value = '';
@@ -75,7 +75,7 @@ function saveNote() {
 function renderNotes(items, container) {
   container.innerHTML = ''
  
-  items.reverse().forEach(item => {
+  items.forEach(item => {
     const article = document.createElement('article')
  
     article.setAttribute('class', 'note')
