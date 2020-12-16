@@ -314,6 +314,7 @@ aside header .display-button {
   z-index: 99999;
   height: 100%;
   width: 100%;
+  text-align: center;
 }
 .modalconent {
   position: absolute;
@@ -326,4 +327,6 @@ aside header .display-button {
   height: 70%;
   padding: 20px;
   color: var(--txt);
+  text-align: center;
+  font-size: 1.1em;
 }
