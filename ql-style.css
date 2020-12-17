@@ -7,6 +7,10 @@
   margin-bottom: 5%;
 }
 
+.ql-viewer img {
+  max-width: 100%;
+}
+
 .ql-viewer p,
 .ql-viewer ol,
 .ql-viewer ul,
