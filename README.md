@@ -2,9 +2,11 @@
 
 <div align="center">
     <a href="https://tanngrisnr.github.io/fe20tp1_Paper/">
-        <img src="https://user-images.githubusercontent.com/54536486/102501298-9207b380-407d-11eb-813f-6955319236bd.png">
+        <img src="https://user-images.githubusercontent.com/54536486/102505044-d5642100-4081-11eb-8e18-a1549ff43795.png">
     </a>
 </div>
+
+(https://tanngrisnr.github.io/fe20tp1_Paper/)
 
 ## App Screenshots
 
