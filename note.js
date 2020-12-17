@@ -1,15 +1,16 @@
+/*DOM and global variables declaration*/
 const saveBtn = document.getElementById('save');
 const noteList = document.getElementById('note-list')
 const favoriteList = document.getElementById('favorite-list')
 const titleInput = document.getElementById('title')
 const header = document.getElementById('sidebar-header')
- 
+const search = document.getElementById("search")
  
  
 let notes = [];
 let favorites = [];
 
-
+/*Class extending quill clipboard to stop copied text from keeping formatting*/
 let Clipboard = Quill.import('modules/clipboard');
 let Delta = Quill.import('delta');
 
@@ -25,7 +26,9 @@ class PlainClipboard extends Clipboard {
 }
 
 Quill.register('modules/clipboard', PlainClipboard, true);
- 
+
+/*Quill toolbar initialized*/ 
+
 const toolbarModifier = [
   ['bold', 'italic', 'underline', 'strike'],
   [{ 'header': [1, 2, 3, false] }],
@@ -33,7 +36,7 @@ const toolbarModifier = [
   [{ 'align': [] }],
   [ 'link', 'image' ]
 ]
-
+/*Quill editor initialized*/
 const quill = new Quill('#editor', {
   modules: {
     toolbar: toolbarModifier,
@@ -43,7 +46,7 @@ const quill = new Quill('#editor', {
 });
 
  
- 
+/*Save button event listener and simple validation*/ 
 saveBtn.addEventListener('click', () => {
 
 
@@ -55,7 +58,7 @@ saveBtn.addEventListener('click', () => {
   }
  
 });
- 
+/*fucntion defining new note object to be saved to local storage*/ 
 function saveNote() {
   const note = {
     title: getTitle(),
@@ -71,7 +74,7 @@ function saveNote() {
   titleInput.value = '';
 }
  
- 
+/*Function to render notes on page*/ 
 function renderNotes(items, container) {
   container.innerHTML = ''
  
@@ -97,7 +100,7 @@ function renderNotes(items, container) {
   });
 }
 
-
+/* function to print targeted note */
 function printNote(noteID) {
 let printContents = document.getElementById(noteID).innerHTML;
 
@@ -107,7 +110,7 @@ let printContents = document.getElementById(noteID).innerHTML;
   /* location.reload() */
 
 }
- 
+/*Function to calculate the date the note was made*/ 
 function getDate() {
   let today = new Date();
   let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -116,7 +119,7 @@ function getDate() {
   return dateTime;
 }
  
- 
+/*Function to get title from editor*/ 
 function getTitle() {
   if (titleInput.value === "") {
     return quill.getText().substr(0,12) + "...";
@@ -129,13 +132,13 @@ function getTitle() {
   }
 }
  
- 
+/*Function adding notes to local storage and updating rendered notes to reflect this*/ 
 function addToLocalStorage(arr) {
   localStorage.setItem("notes", JSON.stringify(arr));
   renderNotes(notes, noteList);
  
 }
- 
+/*Function to update get notes from local storage and update on page via renderNotes() function */ 
 function getFromLocalStorage() {
   const reference = localStorage.getItem("notes");
  
@@ -145,7 +148,7 @@ function getFromLocalStorage() {
  
   }
 }
- 
+/*function to delete note from local storage*/ 
 function deleteNote(id) {
  
   notes = notes.filter(item => {
@@ -154,14 +157,15 @@ function deleteNote(id) {
  
   addToLocalStorage(notes);
 }
- 
+/*Function to open note in editor to allow edits*/ 
 function editNote(id) {
   note = notes.find(item => item.id == id)
   quill.setContents(note.editorData)
   titleInput.value = note.title
   deleteNote(id);
 }
- 
+
+/*Function to mark notes as favorite and put them on the favorites list*/
 function favoriteNote(id){
   note = notes.find(item => item.id == id)
   note.isFavorite = true;
@@ -170,7 +174,7 @@ function favoriteNote(id){
   });
   renderNotes(favorites, favoriteList);
 }
- 
+/*Function to unfavorite notes*/ 
 function unFavoriteNote(id){
   note = notes.find(item => item.id == id)
   note.isFavorite = false;
@@ -181,9 +185,10 @@ function unFavoriteNote(id){
 }
  
  
- 
+/*Function call to get notes from local storage and render on page */ 
 getFromLocalStorage();
  
+/*Event listeners for saved notes list*/
 noteList.addEventListener("click", (event) => {
   if (event.target.classList.contains("delete-button")) {
     unFavoriteNote(event.target.parentElement.getAttribute("data-key"));
@@ -211,7 +216,8 @@ noteList.addEventListener("click", (event) => {
     }
   }
 });
- 
+
+/* event listeners for favorites list */
 favoriteList.addEventListener("click", (event) => {
   if(event.target.classList.contains("favorite-button")) {
     unFavoriteNote(event.target.parentElement.getAttribute("data-key"));
@@ -237,7 +243,7 @@ favoriteList.addEventListener("click", (event) => {
     }
   }
 })
-
+/*Event listener and toggle functions for saved notes and favorite notes*/
 header.addEventListener('click', (event)=>{
   if(event.target.classList.contains('show-all')) {
     if (!event.target.classList.contains('active-display')) {
@@ -256,3 +262,21 @@ header.addEventListener('click', (event)=>{
     }
 }
 })
+/* Event listener for search field and search function */
+search.addEventListener("input", () => {
+  search_note()
+})
+function search_note() {
+  let input = document.getElementById('search').value
+  input = input.toLowerCase();
+  let x = document.getElementsByClassName('note');
+
+  for (i = 0; i < x.length; i++) {
+      if (!x[i].innerHTML.toLowerCase().includes(input)) {
+          x[i].style.visibility = "collapse";
+      }
+      else {
+          x[i].style.visibility = "visible";
+      }
+  }
+} 

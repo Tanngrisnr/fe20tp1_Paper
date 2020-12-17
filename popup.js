@@ -1,6 +1,8 @@
-const search = document.getElementById("search")
+/*functioning handling pop-up window for new users of application*/
 
 var infoShown = false;
+
+
 
 if (!localStorage.getItem('infoShown')) {
     load();
@@ -18,21 +20,3 @@ function load() {
         };
     };
 }
-
-search.addEventListener("input", () => {
-    search_note()
-})
-function search_note() {
-    let input = document.getElementById('search').value
-    input = input.toLowerCase();
-    let x = document.getElementsByClassName('note');
-
-    for (i = 0; i < x.length; i++) {
-        if (!x[i].innerHTML.toLowerCase().includes(input)) {
-            x[i].style.visibility = "collapse";
-        }
-        else {
-            x[i].style.visibility = "visible";
-        }
-    }
-} 

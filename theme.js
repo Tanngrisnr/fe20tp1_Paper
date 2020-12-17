@@ -1,4 +1,4 @@
-// Select the button
+// Functions and event listeners to toggle between themes and save preference to local storage
 const dmBtn = document.getElementById('dm-btn');
 const ftBtn = document.getElementById('ft-btn')
 const root = document.documentElement;
@@ -34,44 +34,3 @@ ftBtn.addEventListener("click", () => {
   localStorage.setItem("font-theme", theme);
 });
 
-
-
-
-/* const root = document.documentElement;
-const dmToggle = document.getElementById('dm-btn')
-let darkmode = getTheme('darkmode');
-
-window.addEventListener('load', () => {
-    toggleDarkmode();
-})
-
-
-dmToggle.addEventListener('click', () => {
-    toggleDarkmode();
-});
-
-function toggleDarkmode() {
-
-    if (!darkmode) {
-        root.style.setProperty('--bg', 'lightslategrey')
-        root.style.setProperty('--txt', 'white')
-        updateTheme('darkmode', darkmode)
-    }
-    else {
-    root.style.setProperty('--bg', 'white')
-    root.style.setProperty('--txt', 'lightslategrey')
-    updateTheme('darkmode', darkmode)
-    }
-    getTheme('darkmode')
-}
-
-function updateTheme(name, bool) {
-    localStorage.setItem(name, JSON.stringify(bool));
-}
-function getTheme(name) {
-    const reference = localStorage.getItem(name);
-    if (reference) {
-        return JSON.parse(reference);
-      }
-}
- */
