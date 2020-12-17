@@ -31,7 +31,7 @@ const toolbarModifier = [
   [{ 'header': [1, 2, 3, false] }],
   [{ 'list': 'ordered' }, { 'list': 'bullet' }],
   [{ 'align': [] }],
-  [ 'link', 'image', 'video', 'formula' ]
+  [ 'link', 'image' ]
 ]
 
 const quill = new Quill('#editor', {
@@ -104,7 +104,7 @@ let printContents = document.getElementById(noteID).innerHTML;
   document.body.innerHTML = printContents;
 
   window.print();
-  location.reload()
+  /* location.reload() */
 
 }
  

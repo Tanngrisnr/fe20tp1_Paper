@@ -28,6 +28,14 @@
     background-color: white !important;
   }
 
+  p,
+  ol,
+  ul,
+  pre,
+  blockquote {
+    font-size: 12pt;
+  }
+
   .ql-size-small {
     font-size: 0.75rem;
   }

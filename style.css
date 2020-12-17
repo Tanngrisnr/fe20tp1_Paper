@@ -160,17 +160,28 @@ aside {
 #editor {
   background: 0;
   max-width: 90%;
+  font-size: 1rem;
 }
 
 #editor h1,
 #editor h2,
 #editor h3 {
   color: var(--txt);
+  font-family: var(--headingfont);
 }
 
-#editor > * {
+#editor p,
+#editor ol,
+#editor ul,
+#editor pre,
+#editor blockquote {
   color: var(--txt);
+  font-family: var(--bodyfont);
 }
+
+/* #editor > * {
+  color: var(--txt);
+} */
 .ql-editor.ql-blank::before {
   color: var(--txt);
 }
@@ -282,9 +293,7 @@ aside header .display-button {
   transition: max-height 0.2s ease-out;
   background-color: var(--bg);
 }
-.ql-viewer img {
-  max-width: 100%;
-}
+
 .note-options {
   font-size: 1em;
   margin: 0;
