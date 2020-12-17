@@ -44,3 +44,15 @@ git clone https://github.com/Tanngrisnr/fe20tp1_Paper
 ![git clone https://github.com/Tanngrisnr/fe20tp1_Paper](https://media3.giphy.com/media/t3xe5go7BNVm0bYDGr/giphy.gif)
 
 This command will copy a full project to your local environment.
+
+## Our Scrumboard
+
+(https://www.notion.so/9a6a412228fa4693a6bf2400fc757176?v=510bdf1361734ddfa6a3953a9fad36b8)
+
+## Backlog of features to be added
+
+- Custom tags for saved notes
+- Ability to paste markdown and have it reformat correctly
+- Export note as markdown
+- Implement statistics for users
+- Custom note templates
